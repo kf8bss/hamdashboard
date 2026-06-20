@@ -74,8 +74,8 @@ var aIMG = [
     "https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544",
   ],
   [
-    "SATELLITE CAN",
-    "https://cdn.star.nesdis.noaa.gov/GOES16/GLM/SECTOR/can/EXTENT3/GOES16-CAN-EXTENT3-1125x560.gif",
+    "OPENHAMCLOCK",
+    "https://openhamclock.com",
   ],
   [
     "LOCAL SATELLITE",
