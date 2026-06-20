@@ -1,6 +1,6 @@
 const disableSetup = false;
 const disableLdCfg = false;
-var topBarCenterText = `VA3HDL - FN04ga - .js`;
+var topBarCenterText = `KF8BSS - EN80nc - .js`;
 
 // Grid layout
 var layout_cols = 4;
