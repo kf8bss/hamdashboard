@@ -28,7 +28,7 @@ var aURL = [
     "1",
     "R",
   ],
-  ["2196F3", "PISTAR", "http://pi-star.local/", "1.2"],
+  ["2196F3", "PISTAR", "http://127.0.0.1:3001/", "1.2"],
   [
     "2196F3",
     "RADAR",
