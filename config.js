@@ -66,8 +66,8 @@ var aIMG = [
     "https://radar.weather.gov/ridge/standard/KILN_loop.gif",
   ],
   [
-    "NOAA D-RAP (inverted)",
-    "invert|https://s.w-x.co/staticmaps/wu/wxtype/county_loc/bgm/animate.png",
+    "NOAA D-RAP",
+    "https://services.swpc.noaa.gov/images/animations/d-rap/global/latest.png",
   ],
   [
     "ISS POSITION",
