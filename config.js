@@ -62,7 +62,7 @@ var aURL = [
 var aIMG = [
   [["Radar CONUS", "Radar Small"], "https://radar.weather.gov/ridge/standard/CONUS-LARGE_loop.gif", "https://radar.weather.gov/ridge/standard/CONUS_loop.gif"],
   [
-    "LOCAL RADAR (inverted)",
+    "LOCAL RADAR",
     "https://radar.weather.gov/ridge/standard/KILN_loop.gif",
   ],
   [
