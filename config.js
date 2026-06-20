@@ -75,7 +75,7 @@ var aIMG = [
   ],
   [
     "OPENHAMCLOCK",
-    "http://127.0.0.1:3001",
+    "iframe|http://127.0.0.1:3001",
   ],
   [
     "LOCAL SATELLITE",
