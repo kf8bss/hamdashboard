@@ -1,6 +1,23 @@
+// Dudley Irvin - kf8bss@drienterprisesllc.com
+
 const disableSetup = false;
 const disableLdCfg = false;
 var topBarCenterText = `KF8BSS - EN80nc`;
+
+var aRSS = [
+	["https://forecast.weather.gov/xml/current_obs/KCMH.rss", 5],
+	// ["https://forecast.weather.gov/xml/current_obs/KTIX.rss", 5],
+	// ["https://forecast.weather.gov/xml/current_obs/KMLB.rss", 5],
+	// ["https://forecast.weather.gov/xml/current_obs/KMCO.rss", 5],
+	// ["https://api.weather.gov/alerts/active/zone/FLC009", 10],
+	// ["https://api.weather.gov/alerts?active=true&status=actual&message_type=alert&zone=FLC009&certainty=Observed&limit=500", 10],
+	// ["https://www.nhc.noaa.gov/index-at.xml", 60],
+	// ["https://www.nhc.noaa.gov/gis-at.xml", 60],
+	// ["https://www.nhc.noaa.gov/nhc_at1.xml", 60],
+	// ["https://www.nhc.noaa.gov/gtwo.xml", 480],
+	// Source - https://www.nhc.noaa.gov/aboutrss.shtml
+	// ["https://www.nhc.noaa.gov/nhc_at1.xml", 480], // at1 - 5
+];
 
 // Grid layout
 var layout_cols = 4;
