@@ -4,21 +4,6 @@ const disableSetup = false;
 const disableLdCfg = false;
 var topBarCenterText = `KF8BSS - EN80nc`;
 
-var aRSS = [
-	["https://forecast.weather.gov/xml/current_obs/KCMH.rss", 5],
-	// ["https://forecast.weather.gov/xml/current_obs/KTIX.rss", 5],
-	// ["https://forecast.weather.gov/xml/current_obs/KMLB.rss", 5],
-	// ["https://forecast.weather.gov/xml/current_obs/KMCO.rss", 5],
-	// ["https://api.weather.gov/alerts/active/zone/FLC009", 10],
-	// ["https://api.weather.gov/alerts?active=true&status=actual&message_type=alert&zone=FLC009&certainty=Observed&limit=500", 10],
-	// ["https://www.nhc.noaa.gov/index-at.xml", 60],
-	// ["https://www.nhc.noaa.gov/gis-at.xml", 60],
-	// ["https://www.nhc.noaa.gov/nhc_at1.xml", 60],
-	// ["https://www.nhc.noaa.gov/gtwo.xml", 480],
-	// Source - https://www.nhc.noaa.gov/aboutrss.shtml
-	// ["https://www.nhc.noaa.gov/nhc_at1.xml", 480], // at1 - 5
-];
-
 // Grid layout
 var layout_cols = 4;
 var layout_rows = 3;
@@ -126,6 +111,18 @@ var tileDelay = [
 // RSS feed items
 // Structure is [feed URL, refresh interval in minutes]
 var aRSS = [
-  ["https://www.amsat.org/feed/", 60],           // Example RSS feed, refresh every 60 minutes
-  ["https://daily.hamweekly.com/atom.xml", 120], // Example Atom feed, refresh every 120 minutes
+  // ["https://www.amsat.org/feed/", 60],           // Example RSS feed, refresh every 60 minutes
+  // ["https://daily.hamweekly.com/atom.xml", 120], // Example Atom feed, refresh every 120 minutes
+  ["https://forecast.weather.gov/xml/current_obs/KCMH.rss", 5],
+	// ["https://forecast.weather.gov/xml/current_obs/KTIX.rss", 5],
+	// ["https://forecast.weather.gov/xml/current_obs/KMLB.rss", 5],
+	// ["https://forecast.weather.gov/xml/current_obs/KMCO.rss", 5],
+	// ["https://api.weather.gov/alerts/active/zone/FLC009", 10],
+	// ["https://api.weather.gov/alerts?active=true&status=actual&message_type=alert&zone=FLC009&certainty=Observed&limit=500", 10],
+	// ["https://www.nhc.noaa.gov/index-at.xml", 60],
+	// ["https://www.nhc.noaa.gov/gis-at.xml", 60],
+	// ["https://www.nhc.noaa.gov/nhc_at1.xml", 60],
+	// ["https://www.nhc.noaa.gov/gtwo.xml", 480],
+	// Source - https://www.nhc.noaa.gov/aboutrss.shtml
+	// ["https://www.nhc.noaa.gov/nhc_at1.xml", 480], // at1 - 5
   ];
