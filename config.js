@@ -76,8 +76,8 @@ var aIMG = [
     "https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544",
   ],
   [
-    "OPENHAMCLOCK",
-    "iframe|https://openhamclock.kf8bss-radio.com",
+    "NOAA D-RAP",
+    "https://services.swpc.noaa.gov/images/animations/d-rap/global/latest.png",
   ],
   [
     "LOCAL SATELLITE",
@@ -88,8 +88,9 @@ var aIMG = [
     "https://images.lightningmaps.org/blitzortung/america/index.php?animation=usa",
   ],
   [
-    "LIGHTNING LOCAL",
-    "https://www.blitzortung.org/en/Images/image_b_ny.png",
+    "ISS POSITION",
+	"https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544",
+    // "https://www.blitzortung.org/en/Images/image_b_ny.png",
   ],
   ["YOUTUBE EXAMPLE", "iframe|https://www.youtube.com/embed/fzPFaXAV_2Y?autoplay=1&mute=1"],
   [
