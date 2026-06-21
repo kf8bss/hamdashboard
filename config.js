@@ -114,6 +114,10 @@ var aRSS = [
   // ["https://www.amsat.org/feed/", 60],           // Example RSS feed, refresh every 60 minutes
   // ["https://daily.hamweekly.com/atom.xml", 120], // Example Atom feed, refresh every 120 minutes
   ["https://forecast.weather.gov/xml/current_obs/KCMH.rss", 5],
+  ["https://api.weather.gov/alerts/active/zone/OHC049", 10],
+  ["https://api.weather.gov/alerts/active/zone/OHC041", 10],
+  ["https://api.weather.gov/alerts/active/zone/MDC003", 10],
+  ["https://api.weather.gov/alerts/active/zone/MIC009", 10],
 	// ["https://forecast.weather.gov/xml/current_obs/KTIX.rss", 5],
 	// ["https://forecast.weather.gov/xml/current_obs/KMLB.rss", 5],
 	// ["https://forecast.weather.gov/xml/current_obs/KMCO.rss", 5],
