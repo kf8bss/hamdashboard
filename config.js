@@ -1,6 +1,6 @@
 const disableSetup = false;
 const disableLdCfg = false;
-var topBarCenterText = `KF8BSS - EN80nc - .js`;
+var topBarCenterText = `KF8BSS - EN80nc`;
 
 // Grid layout
 var layout_cols = 4;
