@@ -1905,7 +1905,8 @@ var tileDelay = ${JSON.stringify(settings.aImages.map(item => item[2]), null, 2)
         const containerWidth = rssTickerContent.parentElement.offsetWidth;
 
         // Define a base speed (e.g., 180px per second)
-        const baseSpeed = 180; // pixels per second
+        // const baseSpeed = 180; // pixels per second
+		const baseSpeed = 90;
 
         // Calculate the duration based on the content width
         const duration = (contentWidth + containerWidth) / baseSpeed;
