@@ -1940,7 +1940,11 @@ var tileDelay = ${JSON.stringify(settings.aImages.map(item => item[2]), null, 2)
       // List of CORS proxies to try (in order of preference)
       const corsProxies = [
         {
-          name: 'allorigins',
+          name: 'myworker',
+		  url: (feedUrl) => `https://rss-proxy.kf8bss.workers.dev/?url=${encodeURIComponent(feedUrl)}`
+		},
+		{
+		  name: 'allorigins',
           url: (feedUrl) => `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`
         },
         {
