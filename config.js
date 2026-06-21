@@ -28,7 +28,7 @@ var aURL = [
     "1",
     "R",
   ],
-  ["2196F3", "OpenHamClock", "http://127.0.0.1:3001/", "1.2"],
+  ["2196F3", "OpenHamClock", "https://openhamclock.kf8bss-radio.com", "1"],
   [
     "2196F3",
     "RADAR",
@@ -75,7 +75,7 @@ var aIMG = [
   ],
   [
     "OPENHAMCLOCK",
-    "iframe|http://localhost:3001",
+    "iframe|https://openhamclock.kf8bss-radio.com",
   ],
   [
     "LOCAL SATELLITE",
