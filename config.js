@@ -31,7 +31,7 @@ var aURL = [
     "R",
   ],
   ["2196F3", "OpenHamClock", "https://openhamclock.kf8bss-radio.com", "1"],
-  ["2196F3", "FlightRadar24", "https://www.flightradar24.com/40.12,-82.99/9", "1"],
+  ["2196F3", "ADS-B", "https://globe.adsbexchange.com/?lat=40.123&lon=-82.895&enableLabels&extendedLabels=1&zoom=11", "1"],
   [
     "2196F3",
     "RADAR",
