@@ -82,10 +82,10 @@ var aIMG = [
     "https://www.spc.noaa.gov/climo/reports/today.gif"
   ],
   [
-    ["SPC Day 1", "SPC Day 2", "SPC Day 3", "WPC Hazards"],
-	"https://www.spc.noaa.gov/products/outlook/day1otlk.gif",
-    "https://www.spc.noaa.gov/products/outlook/day2otlk.gif",
-    "https://www.spc.noaa.gov/products/outlook/day3otlk.gif",
+    ["WPC Forecast D1", "WPC Forecast D2", "WPC Forecast D3", "WPC Hazards D3-7"],
+	"https://www.wpc.ncep.noaa.gov/noaa/noaa.gif",
+    "https://www.wpc.ncep.noaa.gov/noaa/noaad2.gif",
+    "https://www.wpc.ncep.noaa.gov/noaa/noaad3.gif",
     "https://www.wpc.ncep.noaa.gov/threats/final/hazards_d3_7_contours.png"
   ],
   [
