@@ -76,7 +76,7 @@ var aIMG = [
     "https://cdn.star.nesdis.noaa.gov/GOES19/ABI/SECTOR/cgl/13/GOES19-CGL-13-600x600.gif"
   ],
   [
-    ["Watches & Warnings", "Watches & Warnings", "Lightning", "Storm Reports"],
+    ["Watches & Warnings", "Broad WWs", "Lightning", "Storm Reports"],
 	"https://www.spc.noaa.gov/products/watch/validww.png",
 	"https://www.weather.gov/wwamap/png/US.png",
     "https://images.lightningmaps.org/blitzortung/america/index.php?animation=usa",
@@ -118,7 +118,7 @@ var aIMG = [
 
 // Image rotation intervals in milliseconds per tile - If the line below is commented, all tiles will be rotated every 30000 milliseconds (30s)
 var tileDelay = [
-  11200,10000,11000,10100,
+  11200,10000,8000,10100,
   10200,10500,10300,10600,
   30400,60700,60900,10800
 ];
