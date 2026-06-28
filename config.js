@@ -83,9 +83,9 @@ var aIMG = [
   ],
   [
     ["SPC Day 1", "SPC Day 2", "SPC Day 3", "WPC Hazards"],
-	"https://www.spc.noaa.gov/products/outlook/day1otlk_1630.gif",
-    "https://www.spc.noaa.gov/products/outlook/day2otlk_0600.gif",
-    "https://www.spc.noaa.gov/products/outlook/day3otlk_0730.gif",
+	"https://www.spc.noaa.gov/products/outlook/day1otlk.gif",
+    "https://www.spc.noaa.gov/products/outlook/day2otlk.gif",
+    "https://www.spc.noaa.gov/products/outlook/day3otlk.gif",
     "https://www.wpc.ncep.noaa.gov/threats/final/hazards_d3_7_contours.png"
   ],
   [
