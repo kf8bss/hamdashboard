@@ -76,8 +76,9 @@ var aIMG = [
     "https://cdn.star.nesdis.noaa.gov/GOES19/ABI/SECTOR/cgl/13/GOES19-CGL-13-600x600.gif"
   ],
   [
-    ["Watches & Warnings", "Lightning", "Storm Reports"],
+    ["Watches & Warnings", "Watches & Warnings", "Lightning", "Storm Reports"],
 	"https://www.spc.noaa.gov/products/watch/validww.png",
+	"https://www.weather.gov/wwamap/png/US.png",
     "https://images.lightningmaps.org/blitzortung/america/index.php?animation=usa",
     "https://www.spc.noaa.gov/climo/reports/today.gif"
   ],
