@@ -76,11 +76,11 @@ var aIMG = [
     "https://cdn.star.nesdis.noaa.gov/GOES19/ABI/SECTOR/cgl/13/GOES19-CGL-13-600x600.gif"
   ],
   [
-    ["Watches & Warnings", "Broad WWs", "Lightning", "Storm Reports"],
+    ["Watches & Warnings", "Broad WWs", "Storm Reports", "Precipitation"],
 	"https://www.spc.noaa.gov/products/watch/validww.png",
 	"https://www.weather.gov/wwamap/png/US.png",
-    "https://images.lightningmaps.org/blitzortung/america/index.php?animation=usa",
-    "https://www.spc.noaa.gov/climo/reports/today.gif"
+    "https://www.spc.noaa.gov/climo/reports/today.gif",
+	"https://www.wpc.ncep.noaa.gov/qpf/fill_94qwbg.gif"
   ],
   [
     ["WPC Forecast D1", "WPC Forecast D2", "WPC Forecast D3", "WPC Hazards D3-7"],
