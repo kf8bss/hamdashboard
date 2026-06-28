@@ -63,48 +63,30 @@ var aURL = [
 // You can't add more items because there are only 12 placeholders on the dashboard
 // but you can replace the titles and the images with anything you want.
 var aIMG = [
-  [["Radar CONUS", "Radar Small"], "https://radar.weather.gov/ridge/standard/CONUS-LARGE_loop.gif", "https://radar.weather.gov/ridge/standard/CONUS_loop.gif"],
   [
-    "LOCAL RADAR",
-    "https://radar.weather.gov/ridge/standard/KILN_loop.gif",
+	["Radar CONUS", "Radar OH", "Radar MD"],
+	"https://radar.weather.gov/ridge/standard/CONUS-LARGE_loop.gif", 
+    "https://radar.weather.gov/ridge/standard/KILN_loop.gif", 
+    "https://radar.weather.gov/ridge/standard/KLWX_loop.gif"
   ],
   [
-    // "NOAA D-RAP",
-    "",
-	"https://data.mesonet.org/data/public/noaa/metar/maps/realtime/latest.tair.png",
-	"https://graphical.weather.gov/GraphicalNDFD.php?sector=CONUS&element=rh&n=1",
-	"https://data.mesonet.org/data/public/noaa/metar/maps/realtime/latest.tapp.png",
-	"https://graphical.weather.gov/GraphicalNDFD.php?sector=CONUS&element=maxt&n=1",
-	"https://www.wpc.ncep.noaa.gov/heat_index_MAX/bchi_day3.gif",
-	"https://graphical.weather.gov/GraphicalNDFD.php?sector=CONUS&element=mint&n=1",
-	"https://graphical.weather.gov/GraphicalNDFD.php?sector=CONUS&element=pop12&n=1",
-	"https://graphical.weather.gov/GraphicalNDFD.php?sector=CONUS&element=vis&n=1",
-	"https://graphical.weather.gov/GraphicalNDFD.php?sector=CONUS&element=windspd&n=1",
-	"https://graphical.weather.gov/GraphicalNDFD.php?sector=CONUS&element=windgust&n=1",
-	"https://graphical.weather.gov/GraphicalNDFD.php?sector=CONUS&element=sky&n=1",
-	// "https://services.swpc.noaa.gov/images/animations/d-rap/global/latest.png",
+    ["Satellite GL GEOCOLOR", "Satellite NE GEOCOLOR", "Satellite IR"],
+    "https://cdn.star.nesdis.noaa.gov/GOES19/ABI/SECTOR/cgl/GEOCOLOR/GOES19-CGL-GEOCOLOR-600x600.gif",
+    "https://cdn.star.nesdis.noaa.gov/GOES19/ABI/SECTOR/ne/GEOCOLOR/GOES19-NE-GEOCOLOR-600x600.gif",
+    "https://cdn.star.nesdis.noaa.gov/GOES19/ABI/SECTOR/cgl/13/GOES19-CGL-13-600x600.gif"
   ],
   [
-    // "ISS POSITION",
-    "",
-	"https://www.wpc.ncep.noaa.gov/noaa/noaa.gif",
-	"https://www.wpc.ncep.noaa.gov/noaa/noaad2.gif",
-	"https://www.wpc.ncep.noaa.gov/noaa/noaad3.gif",
-	// "https://www.spc.noaa.gov/products/exper/day4-8/day48prob.gif",
-	// "https://origin.wpc.ncep.noaa.gov/basicwx/allfcsts_loop_ndfd.gif",
-	"https://www.wpc.ncep.noaa.gov/basicwx/bwxloop_ndfd.html",
-	"https://www.spc.noaa.gov/exper/mesoanalysis/activity_loop.gif",
+    ["Watches & Warnings", "Lightning", "Storm Reports"],
 	"https://www.spc.noaa.gov/products/watch/validww.png",
-	"https://www.spc.noaa.gov/climo/reports/today.gif",
-	// "https://www.weather.gov/wwamap/png/US.png",
-	"https://www.spc.noaa.gov/products/exper/enhtstm/imgs/enh_1600.gif",
-	"https://www.spc.noaa.gov/products/outlook/day2otlk_0600.gif",
-	"https://www.spc.noaa.gov/products/outlook/day3otlk_0730.gif",
-	"https://www.wpc.ncep.noaa.gov/threats/final/hazards_d3_7_contours.png",
-	"https://www.wpc.ncep.noaa.gov/qpf/fill_94qwbg.gif",
-	// "https://s.w-x.co/staticmaps/acttemp_1280x720.jpg?crop=16:9",
-	//"https://www.usairnet.com/weather/images/current-temperature.png",
-	// "https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544",
+    "https://images.lightningmaps.org/blitzortung/america/index.php?animation=usa",
+    "https://www.spc.noaa.gov/climo/reports/today.gif"
+  ],
+  [
+    ["SPC Day 1", "SPC Day 2", "SPC Day 3", "WPC Hazards"],
+	"https://www.spc.noaa.gov/products/outlook/day1otlk_1630.gif",
+    "https://www.spc.noaa.gov/products/outlook/day2otlk_0600.gif",
+    "https://www.spc.noaa.gov/products/outlook/day3otlk_0730.gif",
+    "https://www.wpc.ncep.noaa.gov/threats/final/hazards_d3_7_contours.png"
   ],
   [
     "NOAA D-RAP",
