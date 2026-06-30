@@ -119,8 +119,8 @@ var aIMG = [
     "iframe|https://globe.adsbexchange.com/?airport=YYZ",
   ],
   ["VIDEO EXAMPLE", "https://himawari8.nict.go.jp/movie/720/20240611_pifd.mp4"],
-  ["HF PROPAGATION",
-    "https://www.hamqsl.com/solar101vhf.php"],
+  ["ISS POSITION",
+    "https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544"],
 ];
 
 // Image rotation intervals in milliseconds per tile - If the line below is commented, all tiles will be rotated every 30000 milliseconds (30s)
