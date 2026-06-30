@@ -90,12 +90,14 @@ var aIMG = [
     "https://www.wpc.ncep.noaa.gov/threats/final/hazards_d3_7_contours.png"
   ],
   [
-    "NOAA D-RAP",
-    "https://services.swpc.noaa.gov/images/animations/d-rap/global/latest.png",
+    "Solar Summary",
+	// "NOAA D-RAP",
+	"https://www.hamqsl.com/solar101vhf.php"
+    // "https://services.swpc.noaa.gov/images/animations/d-rap/global/latest.png",
   ],
   [
-    "LOCAL SATELLITE",
-    "https://cdn.star.nesdis.noaa.gov/GOES19/ABI/SECTOR/cgl/GEOCOLOR/GOES19-CGL-GEOCOLOR-600x600.gif",
+    "NOAA D-RAP",
+    "https://services.swpc.noaa.gov/images/animations/d-rap/global/latest.png",
   ],
   [
     "LIGHTNING",
