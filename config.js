@@ -98,8 +98,10 @@ var aIMG = [
     "https://www.hamqsl.com/solar101vhf.php"
   ],
   [
-    "LIGHTNING",
-    "https://images.lightningmaps.org/blitzortung/america/index.php?animation=usa",
+    ["Global MUF Map", "Columbus MOF", "Annapolis MOF"],
+    "https://prop.kc2g.com/renders/current/mufd-normal-now.svg",
+    "https://prop.kc2g.com/api/moflof.svg?grid=EN80nc&metric=mof_sp",
+    "https://prop.kc2g.com/api/moflof.svg?grid=FM18sx&metric=mof_sp"
   ],
   [
     "ISS POSITION",
