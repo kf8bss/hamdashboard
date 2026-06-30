@@ -105,8 +105,12 @@ var aIMG = [
 	"https://prop.kc2g.com/api/moflof.svg?grid=FM18lv&metric=lof_sp"
   ],
   [
-    "ISS POSITION",
-	"https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544",
+    ["Sun - Visible (Sunspots)", "Sun - Active Regions", "Space Weather Overview"],
+    "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIC.jpg",
+    "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_0171.jpg",
+    "https://services.swpc.noaa.gov/images/swx-overview-large.gif"
+	// "ISS POSITION",
+	// "https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544",
     // "https://www.blitzortung.org/en/Images/image_b_ny.png",
   ],
   ["YOUTUBE EXAMPLE", "iframe|https://www.youtube.com/embed/fzPFaXAV_2Y?autoplay=1&mute=1"],
