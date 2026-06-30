@@ -90,14 +90,12 @@ var aIMG = [
     "https://www.wpc.ncep.noaa.gov/threats/final/hazards_d3_7_contours.png"
   ],
   [
-    "Solar Summary",
-	// "NOAA D-RAP",
-	"https://www.hamqsl.com/solar101vhf.php"
-    // "https://services.swpc.noaa.gov/images/animations/d-rap/global/latest.png",
+    "NOAA D-RAP",
+	"https://services.swpc.noaa.gov/images/animations/d-rap/global/latest.png"
   ],
   [
-    "NOAA D-RAP",
-    "https://services.swpc.noaa.gov/images/animations/d-rap/global/latest.png",
+    "Solar Summary",
+    "https://www.hamqsl.com/solar101vhf.php"
   ],
   [
     "LIGHTNING",
