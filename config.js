@@ -113,7 +113,9 @@ var aIMG = [
 	// "https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544",
     // "https://www.blitzortung.org/en/Images/image_b_ny.png",
   ],
-  ["YOUTUBE EXAMPLE", "iframe|https://www.youtube.com/embed/fzPFaXAV_2Y?autoplay=1&mute=1"],
+  [
+	"POWER OUTAGES", "iframe|https://outagemap.aepohio.com/"
+  ],
   [
     "WEBSITE EXAMPLE",
     "iframe|https://globe.adsbexchange.com/?airport=YYZ",
