@@ -98,10 +98,11 @@ var aIMG = [
     "https://www.hamqsl.com/solar101vhf.php"
   ],
   [
-    ["Global MUF Map", "Columbus MUF", "Annapolis MUF"],
-    "https://prop.kc2g.com/renders/current/mufd-normal-now.svg",
+    ["Columbus MUF", "Columbus LUF", "Annapolis MUF", "Annapolis LUF"],
     "https://prop.kc2g.com/api/moflof.svg?grid=EN80nc&metric=mof_sp",
-    "https://prop.kc2g.com/api/moflof.svg?grid=FM18sx&metric=mof_sp"
+    "https://prop.kc2g.com/api/moflof.svg?grid=EN80nc&metric=lof_sp",
+	"https://prop.kc2g.com/api/moflof.svg?grid=FM18sx&metric=mof_sp",
+	"https://prop.kc2g.com/api/moflof.svg?grid=FM18lv&metric=lof_sp"
   ],
   [
     "ISS POSITION",
