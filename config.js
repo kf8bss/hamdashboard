@@ -30,7 +30,9 @@ var aURL = [
     "1",
     "R",
   ],
-  ["2196F3", "OpenHamClock", "https://openhamclock.kf8bss-radio.com", "1"],
+  [
+  ],
+  // ["2196F3", "OpenHamClock", "https://openhamclock.kf8bss-radio.com", "1"],
   ["2196F3", "ADS-B", "https://globe.adsbexchange.com/?airport=KCMH&enableLabels&extendedLabels=1&zoom=10", "1"],
   [
     "2196F3",
