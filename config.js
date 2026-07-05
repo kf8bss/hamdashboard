@@ -154,6 +154,9 @@ var aRSS = [
   // ["https://daily.hamweekly.com/atom.xml", 120], // Example Atom feed, refresh every 120 minutes
   ["https://forecast.weather.gov/xml/current_obs/KCMH.rss", 5],
   ["https://forecast.weather.gov/xml/current_obs/KBWI.rss", 5],
+  ["https://forecast.weather.gov/xml/current_obs/KPIT.rss", 5],
+  ["https://forecast.weather.gov/xml/current_obs/KIND.rss", 5],
+  ["https://forecast.weather.gov/xml/current_obs/KTVC.rss", 5],
   // ["https://api.weather.gov/alerts/active?zone=OHC049", 10],
   // ["https://api.weather.gov/alerts/active?zone=OHC041", 10],
   // ["https://api.weather.gov/alerts/active?zone=MDC003", 10],
