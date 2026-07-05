@@ -121,7 +121,14 @@ var aIMG = [
     // "iframe|https://globe.adsbexchange.com/?airport=YYZ",
 	"MD Alerts", "iframe|/alerts-md.html"
   ],
-  ["VIDEO EXAMPLE", "https://himawari8.nict.go.jp/movie/720/20240611_pifd.mp4"],
+  // ["VIDEO EXAMPLE", "https://himawari8.nict.go.jp/movie/720/20240611_pifd.mp4"],
+  [
+	["SR-161 at Sunbury", "I-71 at Polaris", "US-23 at Cheshire", "I-71 at US-36"],
+	"https://itscameras.dot.state.oh.us/images/CMH/CCTV2276.jpg",
+    "https://itscameras.dot.state.oh.us/images/CMH/CMH039.jpg",
+    "https://itscameras.dot.state.oh.us/images/CMH/CCTV2216.jpg",
+    "https://itscameras.dot.state.oh.us/images/CMH/I-71_at_US-36.jpg"
+  ],
   ["ISS POSITION",
     "https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544"],
 ];
