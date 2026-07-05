@@ -338,5 +338,19 @@ async function refresh() {
 refresh();
 setInterval(refresh, REFRESH_MS);
 </script>
+<div id="dbl-overlay" style="
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 9999;
+  background: transparent;
+  pointer-events: none;
+"></div>
+
+<script>
+  // Forward double-click to parent dashboard to trigger full-screen
+  document.addEventListener('dblclick', function() {
+    try { window.parent.postMessage('dblclick', '*'); } catch(e) {}
+  });
+</script>
 </body>
 </html>
