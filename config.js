@@ -114,11 +114,12 @@ var aIMG = [
     // "https://www.blitzortung.org/en/Images/image_b_ny.png",
   ],
   [
-	"POWER OUTAGES", "iframe|https://outagemap.aepohio.com/"
+	"OH Alerts", "iframe|/alerts-oh.html"
   ],
   [
-    "WEBSITE EXAMPLE",
-    "iframe|https://globe.adsbexchange.com/?airport=YYZ",
+    // "WEBSITE EXAMPLE",
+    // "iframe|https://globe.adsbexchange.com/?airport=YYZ",
+	"MD Alerts", "iframe|/alerts-md.html"
   ],
   ["VIDEO EXAMPLE", "https://himawari8.nict.go.jp/movie/720/20240611_pifd.mp4"],
   ["ISS POSITION",
