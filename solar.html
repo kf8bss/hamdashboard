@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Conditions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Victor+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --surface2:  #1c2128;
+      --border:    #30363d;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --green:     #3fb950;
+      --yellow:    #d29922;
+      --orange:    #f0883e;
+      --red:       #f85149;
+      --blue:      #4a9eff;
+      --purple:    #bc8cff;
+      --green-bg:  rgba(63,185,80,0.10);
+      --yellow-bg: rgba(210,153,34,0.12);
+      --orange-bg: rgba(240,136,62,0.12);
+      --red-bg:    rgba(248,81,73,0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 12px;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 10px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .header-title {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .header-time {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    /* ── SCROLL ── */
+    .scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 5px 8px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .scroll::-webkit-scrollbar { width: 4px; }
+    .scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-family: 'Victor Mono', monospace;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+      padding: 4px 0 3px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4px;
+    }
+
+    /* ── METRIC GRID ── */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3px;
+      margin-bottom: 6px;
+    }
+    .metric-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin-bottom: 6px;
+    }
+
+    .metric {
+      border-radius: 4px;
+      border-left: 3px solid;
+      padding: 4px 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .metric.green  { border-left-color: var(--green);  background: var(--green-bg);  }
+    .metric.yellow { border-left-color: var(--yellow); background: var(--yellow-bg); }
+    .metric.orange { border-left-color: var(--orange); background: var(--orange-bg); }
+    .metric.red    { border-left-color: var(--red);    background: var(--red-bg);    }
+
+    .metric-label {
+      font-family: 'Victor Mono', monospace;
+      font-size: 9px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .metric-value {
+      font-family: 'Victor Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .metric.green  .metric-value { color: var(--green);  }
+    .metric.yellow .metric-value { color: var(--yellow); }
+    .metric.orange .metric-value { color: var(--orange); }
+    .metric.red    .metric-value { color: var(--red);    }
+
+    .metric-sub {
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.2;
+    }
+
+    /* ── SCALE FORECAST TABLE ── */
+    .scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 6px;
+      font-size: 11px;
+    }
+    .scale-table th {
+      font-family: 'Victor Mono', monospace;
+      font-size: 9px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 6px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
+    }
+    .scale-table td {
+      padding: 3px 6px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .scale-table tr:last-child td { border-bottom: none; }
+    .scale-name {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .scale-desc {
+      color: var(--muted);
+      font-size: 10px;
+    }
+    .scale-val {
+      font-family: 'Victor Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 3px;
+      padding: 1px 4px;
+    }
+    .scale-0 { color: var(--green);  background: var(--green-bg);  }
+    .scale-1 { color: var(--yellow); background: var(--yellow-bg); }
+    .scale-2 { color: var(--orange); background: var(--orange-bg); }
+    .scale-3 { color: var(--red);    background: var(--red-bg);    }
+
+    /* ── BAND CONDITIONS ── */
+    .band-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin-bottom: 6px;
+    }
+    .band-section-label {
+      font-family: 'Victor Mono', monospace;
+      font-size: 9px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      grid-column: 1 / -1;
+      padding-top: 2px;
+    }
+    .band-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2px 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+    }
+    .band-name {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .band-cond {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    .cond-good { color: var(--green); }
+    .cond-fair { color: var(--yellow); }
+    .cond-poor { color: var(--red); }
+    .cond-closed { color: var(--muted); }
+
+    /* ── FLARE LIST ── */
+    .flare-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      margin-bottom: 2px;
+    }
+    .flare-class {
+      font-family: 'Victor Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      width: 32px;
+      flex-shrink: 0;
+    }
+    .flare-x { color: var(--red); }
+    .flare-m { color: var(--orange); }
+    .flare-c { color: var(--yellow); }
+    .flare-b { color: var(--green); }
+    .flare-time {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .flare-region {
+      font-size: 10px;
+      color: var(--muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* ── STATES ── */
+    .loading {
+      padding: 6px 8px;
+      color: var(--muted);
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .error-row {
+      padding: 4px 6px;
+      color: var(--orange);
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      background: var(--orange-bg);
+      border-radius: 3px;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <span class="header-title">☀ Solar &amp; Space Weather</span>
+  <span class="header-time" id="hdr-time">Loading…</span>
+</div>
+
+<div class="scroll" id="main"></div>
+
+<script>
+const HAMQSL_URL  = 'https://www.hamqsl.com/solarxml.php';
+const SCALES_URL  = 'https://services.swpc.noaa.gov/products/noaa-scales.json';
+const FLARES_URL  = 'https://services.swpc.noaa.gov/json/goes/primary/xray-flares-7day.json';
+const REFRESH_MS  = 10 * 60 * 1000; // 10 minutes
+
+// ── COLOUR HELPERS ──────────────────────────────────────────────
+function kClass(k) {
+  k = parseFloat(k);
+  if (k <= 2) return 'green';
+  if (k <= 4) return 'yellow';
+  if (k <= 6) return 'orange';
+  return 'red';
+}
+function aClass(a) {
+  a = parseFloat(a);
+  if (a <= 7)  return 'green';
+  if (a <= 15) return 'yellow';
+  if (a <= 29) return 'orange';
+  return 'red';
+}
+function sfiClass(sfi) {
+  sfi = parseFloat(sfi);
+  if (sfi >= 150) return 'green';
+  if (sfi >= 100) return 'yellow';
+  if (sfi >= 70)  return 'orange';
+  return 'red';
+}
+function windClass(w) {
+  w = parseFloat(w);
+  if (w < 450) return 'green';
+  if (w < 550) return 'yellow';
+  return 'red';
+}
+function protonClass(p) {
+  p = parseFloat(p);
+  if (p < 10)   return 'green';
+  if (p < 100)  return 'yellow';
+  if (p < 1000) return 'orange';
+  return 'red';
+}
+function xrayClass(x) {
+  if (!x) return 'green';
+  const c = x[0].toUpperCase();
+  if (c === 'A' || c === 'B') return 'green';
+  if (c === 'C') return 'yellow';
+  if (c === 'M') return 'orange';
+  return 'red';
+}
+function condClass(cond) {
+  if (!cond) return 'cond-closed';
+  const c = cond.toLowerCase();
+  if (c === 'good') return 'cond-good';
+  if (c === 'fair') return 'cond-fair';
+  if (c === 'poor') return 'cond-poor';
+  return 'cond-closed';
+}
+function scaleClass(val) {
+  const n = parseInt(val) || 0;
+  if (n === 0) return 'scale-0';
+  if (n === 1) return 'scale-1';
+  if (n === 2) return 'scale-2';
+  return 'scale-3';
+}
+function flareClass(cls) {
+  if (!cls) return 'flare-b';
+  const c = cls[0].toUpperCase();
+  if (c === 'X') return 'flare-x';
+  if (c === 'M') return 'flare-m';
+  if (c === 'C') return 'flare-c';
+  return 'flare-b';
+}
+
+// ── XML PARSER ──────────────────────────────────────────────────
+function xmlVal(doc, tag) {
+  const el = doc.querySelector(tag);
+  return el ? el.textContent.trim() : '';
+}
+function xmlBands(doc) {
+  const bands = {};
+  doc.querySelectorAll('band').forEach(el => {
+    const name = el.getAttribute('name');
+    const time = el.getAttribute('time');
+    if (!bands[name]) bands[name] = {};
+    bands[name][time] = el.textContent.trim();
+  });
+  return bands;
+}
+
+// ── METRIC CARD ─────────────────────────────────────────────────
+function metricCard(cls, label, value, sub) {
+  return `<div class="metric ${cls}">
+    <div class="metric-label">${label}</div>
+    <div class="metric-value">${value}</div>
+    ${sub ? `<div class="metric-sub">${sub}</div>` : ''}
+  </div>`;
+}
+
+// ── RENDER HAMQSL ───────────────────────────────────────────────
+function renderHamqsl(doc) {
+  const sfi    = xmlVal(doc, 'solarflux');
+  const aIdx   = xmlVal(doc, 'aindex');
+  const kIdx   = xmlVal(doc, 'kindex');
+  const xray   = xmlVal(doc, 'xray');
+  const spots  = xmlVal(doc, 'sunspots');
+  const wind   = xmlVal(doc, 'solarwind');
+  const proton = xmlVal(doc, 'protonflux');
+  const geo    = xmlVal(doc, 'geomagfield');
+  const sn     = xmlVal(doc, 'signalnoise');
+  const bands  = xmlBands(doc);
+
+  const bandOrder = ['80m-40m','30m-20m','17m-15m','12m-10m'];
+
+  let bandHTML = `
+    <div class="band-section-label">☀ Day</div>
+    ${bandOrder.map(b => `
+      <div class="band-row">
+        <span class="band-name">${b}</span>
+        <span class="band-cond ${condClass(bands[b]?.day)}">${bands[b]?.day || '—'}</span>
+      </div>`).join('')}
+    <div class="band-section-label">🌙 Night</div>
+    ${bandOrder.map(b => `
+      <div class="band-row">
+        <span class="band-name">${b}</span>
+        <span class="band-cond ${condClass(bands[b]?.night)}">${bands[b]?.night || '—'}</span>
+      </div>`).join('')}`;
+
+  return `
+    <div class="section-label">Solar Indices</div>
+    <div class="metric-grid">
+      ${metricCard(sfiClass(sfi),   'SFI',       sfi,    sfi >= 100 ? 'Good for HF' : sfi >= 70 ? 'Marginal' : 'Poor HF')}
+      ${metricCard(kClass(kIdx),    'K-index',   kIdx,   kIdx <= 2 ? 'Quiet' : kIdx <= 4 ? 'Unsettled' : 'Storm')}
+      ${metricCard(aClass(aIdx),    'A-index',   aIdx,   aIdx <= 7 ? 'Quiet' : aIdx <= 15 ? 'Unsettled' : 'Active')}
+    </div>
+    <div class="metric-grid">
+      ${metricCard(windClass(wind),   'Sol Wind', wind ? wind+' km/s' : '—', wind < 450 ? 'Favorable' : wind < 550 ? 'Elevated' : 'High')}
+      ${metricCard(protonClass(proton),'Proton',  proton ? proton+' pfu' : '—', proton < 10 ? 'S0 Normal' : proton < 100 ? 'S1 Minor' : 'S2+')}
+      ${metricCard(xrayClass(xray),   'X-Ray',   xray || '—', xray?.[0] === 'X' ? 'R3+ Blackout' : xray?.[0] === 'M' ? 'R1-R2 Impact' : 'Nominal')}
+    </div>
+    <div class="metric-grid-2">
+      ${metricCard(spots >= 100 ? 'green' : spots >= 50 ? 'yellow' : 'red', 'Sunspots', spots, spots >= 100 ? 'Good for HF' : spots >= 50 ? 'Moderate' : 'Low')}
+      ${metricCard(geo?.toLowerCase().includes('quiet') ? 'green' : geo?.toLowerCase().includes('unsettl') ? 'yellow' : 'red', 'Geomag', geo || '—', sn ? 'Noise: '+sn : '')}
+    </div>
+    <div class="section-label">HF Band Conditions</div>
+    <div class="band-grid">${bandHTML}</div>`;
+}
+
+// ── RENDER SCALES ───────────────────────────────────────────────
+function renderScales(data) {
+  // data is object keyed "0","1","2" for today, +1, +2
+  const days = ['Today', '+1 Day', '+2 Day'];
+  const scales = [
+    { key: 'R', name: 'R — Radio Blackout',    desc: 'HF impacts' },
+    { key: 'S', name: 'S — Radiation Storm',   desc: 'Polar routes' },
+    { key: 'G', name: 'G — Geomagnetic Storm', desc: 'Propagation' },
+  ];
+
+  const colHeaders = days.map(d =>
+    `<th style="text-align:center">${d}</th>`).join('');
+
+  const rows = scales.map(s => {
+    const vals = [0,1,2].map(i => {
+      const entry = data[String(i)];
+      const val = entry?.[s.key]?.Scale ?? '0';
+      const n = parseInt(val) || 0;
+      const label = n === 0 ? `${s.key}0` : `${s.key}${n}`;
+      return `<td style="text-align:center">
+        <span class="scale-val ${scaleClass(n)}">${label}</span>
+      </td>`;
+    }).join('');
+    return `<tr>
+      <td><span class="scale-name">${s.name}</span><br><span class="scale-desc">${s.desc}</span></td>
+      ${vals}
+    </tr>`;
+  }).join('');
+
+  return `
+    <div class="section-label">NOAA 3-Day Forecast</div>
+    <table class="scale-table">
+      <thead><tr><th>Scale</th>${colHeaders}</tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ── RENDER FLARES ───────────────────────────────────────────────
+function renderFlares(flares) {
+  // Filter to M and X class only, most recent 5
+  const significant = flares
+    .filter(f => f.max_class && (f.max_class[0] === 'M' || f.max_class[0] === 'X'))
+    .slice(-5)
+    .reverse();
+
+  if (significant.length === 0) {
+    return `
+      <div class="section-label">Recent Significant Flares</div>
+      <div class="flare-row">
+        <span class="flare-class flare-b">—</span>
+        <span class="flare-time">No M/X flares in past 7 days</span>
+      </div>`;
+  }
+
+  const rows = significant.map(f => {
+    const cls   = f.max_class || '—';
+    const time  = f.max_time ? f.max_time.substring(0,16).replace('T',' ') + 'Z' : '—';
+    const region = f.source_location ? `Rgn ${f.source_location}` : '';
+    return `<div class="flare-row">
+      <span class="flare-class ${flareClass(cls)}">${cls}</span>
+      <span class="flare-time">${time}</span>
+      <span class="flare-region">${region}</span>
+    </div>`;
+  }).join('');
+
+  return `
+    <div class="section-label">Recent M/X Flares (7 days)</div>
+    ${rows}`;
+}
+
+// ── MAIN REFRESH ────────────────────────────────────────────────
+async function refresh() {
+  const main  = document.getElementById('main');
+  const hdr   = document.getElementById('hdr-time');
+
+  if (!main.innerHTML) {
+    main.innerHTML = '<div class="loading">Fetching solar data…</div>';
+  }
+
+  let hamqslHTML = '', scalesHTML = '', flaresHTML = '';
+
+  // 1. hamqsl XML
+  try {
+    const res  = await fetch(HAMQSL_URL);
+    const text = await res.text();
+    const doc  = new DOMParser().parseFromString(text, 'text/xml');
+    hamqslHTML = renderHamqsl(doc);
+    const updated = xmlVal(doc, 'updated');
+    if (updated) hdr.textContent = updated;
+  } catch(e) {
+    hamqslHTML = `<div class="error-row">⚠ hamqsl unavailable — retrying in 10 min</div>`;
+  }
+
+  // 2. NOAA scales JSON
+  try {
+    const res  = await fetch(SCALES_URL);
+    const data = await res.json();
+    scalesHTML = renderScales(data);
+  } catch(e) {
+    scalesHTML = `<div class="error-row">⚠ NOAA scales unavailable</div>`;
+  }
+
+  // 3. Flare events JSON
+  try {
+    const res    = await fetch(FLARES_URL);
+    const flares = await res.json();
+    flaresHTML   = renderFlares(flares);
+  } catch(e) {
+    flaresHTML = `<div class="error-row">⚠ Flare data unavailable</div>`;
+  }
+
+  main.innerHTML = hamqslHTML + scalesHTML + flaresHTML;
+
+  if (!hdr.textContent || hdr.textContent === 'Loading…') {
+    hdr.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US', {
+      hour: 'numeric', minute: '2-digit', hour12: true
+    });
+  }
+}
+
+refresh();
+setInterval(refresh, REFRESH_MS);
+</script>
+</body>
+</html>
