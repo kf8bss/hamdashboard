@@ -129,15 +129,21 @@ var aIMG = [
     "https://itscameras.dot.state.oh.us/images/CMH/CCTV2216.jpg",
     "https://itscameras.dot.state.oh.us/images/CMH/I-71_at_US-36.jpg"
   ],
-  ["ISS POSITION",
-    "https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544"],
+  // ["ISS POSITION",
+    // "https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544"],
+    ["US-50 at St Margarets", "US-50 at Rowe Blvd", "US-50 at Severn River", "I-97 at Benfield"],
+	"https://chart.maryland.gov/wwwroot/thumbnails/7e01ec5800f700d700437a45351f0214.jpg",
+    "https://chart.maryland.gov/wwwroot/thumbnails/fa0017fb008d004b004af03676235daa.jpg",
+    "https://chart.maryland.gov/wwwroot/thumbnails/a3000f3401a1000b005dd336c4235c0a.jpg",
+    "https://chart.maryland.gov/wwwroot/thumbnails/1e010edb006a00bb004af03676235daa.jpg"
+   ],
 ];
 
 // Image rotation intervals in milliseconds per tile - If the line below is commented, all tiles will be rotated every 30000 milliseconds (30s)
 var tileDelay = [
   11200,10000,8000,10100,
   10200,10500,10300,10600,
-  30400,60700,8000,10800
+  30400,60700,8000,8000
 ];
 
 // RSS feed items
