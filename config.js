@@ -157,6 +157,8 @@ var aRSS = [
   ["https://forecast.weather.gov/xml/current_obs/KPIT.rss", 5],
   ["https://forecast.weather.gov/xml/current_obs/KIND.rss", 5],
   ["https://forecast.weather.gov/xml/current_obs/KTVC.rss", 5],
+  ["https://www.spc.noaa.gov/products/spcwwrss.xml", 5],
+  ["https://www.spc.noaa.gov/products/spcmdrss.xml", 5],
   // ["https://api.weather.gov/alerts/active?zone=OHC049", 10],
   // ["https://api.weather.gov/alerts/active?zone=OHC041", 10],
   // ["https://api.weather.gov/alerts/active?zone=MDC003", 10],
