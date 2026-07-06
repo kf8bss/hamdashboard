@@ -105,7 +105,9 @@ var aIMG = [
     "https://www.hamqsl.com/solar101vhf.php"
   ],
   [
-    ["SOLAR CONDITIONS", "iframe|/solar.html"],
+    "SOLAR CONDITIONS",
+	"iframe|/solar.html"
+  ],
     // "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIC.jpg",
     // "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_0171.jpg",
     // "https://services.swpc.noaa.gov/images/swx-overview-large.gif"
