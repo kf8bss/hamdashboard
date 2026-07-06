@@ -144,7 +144,7 @@ var aIMG = [
 // Image rotation intervals in milliseconds per tile - If the line below is commented, all tiles will be rotated every 30000 milliseconds (30s)
 var tileDelay = [
   11200,10000,8000,10100,
-  10200,10500,10300,10600,
+  10200,10500,10300,60000,
   30400,60700,8000,8000
 ];
 
