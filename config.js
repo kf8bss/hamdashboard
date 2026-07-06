@@ -101,11 +101,11 @@ var aIMG = [
 	"https://prop.kc2g.com/api/moflof.svg?grid=FM18lv&metric=lof_sp"
   ],
   [
-    "Solar Summary",
+    "",
     "https://www.hamqsl.com/solar101vhf.php"
   ],
   [
-    "SOLAR CONDITIONS",
+    "",
 	"iframe|/solar.html"
   ],
     // "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIC.jpg",
