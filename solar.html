@@ -183,30 +183,29 @@
     .scale-3 { color: var(--red);    background: var(--red-bg);    }
 
     /* ── BAND CONDITIONS ── */
-    .band-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3px;
+    .band-table {
+      width: 100%;
+      border-collapse: collapse;
       margin-bottom: 6px;
+      font-size: 11px;
     }
-    .band-section-label {
+    .band-table th {
       font-family: 'Victor Mono', monospace;
       font-size: 9px;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      grid-column: 1 / -1;
-      padding-top: 2px;
+      padding: 3px 6px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
     }
-    .band-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2px 6px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 3px;
+    .band-table th:not(:first-child) { text-align: center; }
+    .band-table td {
+      padding: 3px 6px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
     }
+    .band-table tr:last-child td { border-bottom: none; }
     .band-name {
       font-family: 'Victor Mono', monospace;
       font-size: 10px;
@@ -216,6 +215,7 @@
       font-family: 'Victor Mono', monospace;
       font-size: 10px;
       font-weight: 600;
+      text-align: center;
     }
     .cond-good { color: var(--green); }
     .cond-fair { color: var(--yellow); }
@@ -402,19 +402,24 @@ function renderHamqsl(doc) {
 
   const bandOrder = ['80m-40m','30m-20m','17m-15m','12m-10m'];
 
+  const bandRows = bandOrder.map(b => `
+    <tr>
+      <td><span class="band-name">${b}</span></td>
+      <td><span class="band-cond ${condClass(bands[b]?.day)}">${bands[b]?.day || '—'}</span></td>
+      <td><span class="band-cond ${condClass(bands[b]?.night)}">${bands[b]?.night || '—'}</span></td>
+    </tr>`).join('');
+
   let bandHTML = `
-    <div class="band-section-label">☀ Day</div>
-    ${bandOrder.map(b => `
-      <div class="band-row">
-        <span class="band-name">${b}</span>
-        <span class="band-cond ${condClass(bands[b]?.day)}">${bands[b]?.day || '—'}</span>
-      </div>`).join('')}
-    <div class="band-section-label">🌙 Night</div>
-    ${bandOrder.map(b => `
-      <div class="band-row">
-        <span class="band-name">${b}</span>
-        <span class="band-cond ${condClass(bands[b]?.night)}">${bands[b]?.night || '—'}</span>
-      </div>`).join('')}`;
+    <table class="band-table">
+      <thead>
+        <tr>
+          <th>Band</th>
+          <th>☀ Day</th>
+          <th>🌙 Night</th>
+        </tr>
+      </thead>
+      <tbody>${bandRows}</tbody>
+    </table>`;
 
   return `
     <div class="section-label">Solar Indices</div>
@@ -433,7 +438,7 @@ function renderHamqsl(doc) {
       ${metricCard(geo?.toLowerCase().includes('quiet') ? 'green' : geo?.toLowerCase().includes('unsettl') ? 'yellow' : 'red', 'Geomag', geo || '—', sn ? 'Noise: '+sn : '')}
     </div>
     <div class="section-label">HF Band Conditions</div>
-    <div class="band-grid">${bandHTML}</div>`;
+    ${bandHTML}`;
 }
 
 // ── RENDER SCALES ───────────────────────────────────────────────
