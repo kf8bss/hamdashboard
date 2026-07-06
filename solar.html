@@ -289,9 +289,10 @@
 <div class="scroll" id="main"></div>
 
 <script>
-const HAMQSL_URL  = 'https://www.hamqsl.com/solarxml.php';
-const SCALES_URL  = 'https://services.swpc.noaa.gov/products/noaa-scales.json';
-const FLARES_URL  = 'https://services.swpc.noaa.gov/json/goes/primary/xray-flares-7day.json';
+// allorigins.win wraps response as JSON: { contents: "xml string" }
+const HAMQSL_URL  = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.hamqsl.com/solarxml.php');
+const SCALES_URL    = 'https://services.swpc.noaa.gov/products/noaa-scales.json';
+const FLARES_URL    = 'https://services.swpc.noaa.gov/json/goes/primary/xray-flares-7-day.json';
 const REFRESH_MS  = 10 * 60 * 1000; // 10 minutes
 
 // ── COLOUR HELPERS ──────────────────────────────────────────────
@@ -516,10 +517,11 @@ async function refresh() {
 
   let hamqslHTML = '', scalesHTML = '', flaresHTML = '';
 
-  // 1. hamqsl XML
+  // 1. hamqsl XML (via allorigins proxy — response is JSON { contents: "xml" })
   try {
     const res  = await fetch(HAMQSL_URL);
-    const text = await res.text();
+    const json = await res.json();
+    const text = json.contents;
     const doc  = new DOMParser().parseFromString(text, 'text/xml');
     hamqslHTML = renderHamqsl(doc);
     const updated = xmlVal(doc, 'updated');
