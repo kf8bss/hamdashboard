@@ -290,8 +290,8 @@
 <div class="scroll" id="main"></div>
 
 <script>
-// allorigins.win wraps response as JSON: { contents: "xml string" }
-const HAMQSL_URL  = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.hamqsl.com/solarxml.php');
+// Cloudflare Worker proxy — returns raw XML directly
+const HAMQSL_URL  = 'https://hamqsl-proxy.kf8bss.workers.dev/';
 const SCALES_URL    = 'https://services.swpc.noaa.gov/products/noaa-scales.json';
 const FLARES_URL    = 'https://services.swpc.noaa.gov/json/goes/primary/xray-flares-7-day.json';
 const REFRESH_MS  = 10 * 60 * 1000; // 10 minutes
@@ -523,11 +523,10 @@ async function refresh() {
 
   let hamqslHTML = '', scalesHTML = '', flaresHTML = '';
 
-  // 1. hamqsl XML (via allorigins proxy — response is JSON { contents: "xml" })
+  // 1. hamqsl XML (via Cloudflare Worker proxy — returns raw XML)
   try {
     const res  = await fetch(HAMQSL_URL);
-    const json = await res.json();
-    const text = json.contents;
+    const text = await res.text();
     const doc  = new DOMParser().parseFromString(text, 'text/xml');
     hamqslHTML = renderHamqsl(doc);
     const updated = xmlVal(doc, 'updated');
