@@ -1707,17 +1707,22 @@ var tileDelay = ${JSON.stringify(settings.aImages.map(item => item[2]), null, 2)
         document.getElementById("settingsPage").style.display = "none";
         setRot();
       } else {
-        document.getElementById("iFrameContainer").style.zIndex = 1;
-        document.getElementById("FullScreen").style.display = "block";
         var src = aURL[num][2];
-        if (isDark(src)) {
-          document.getElementById("FullScreen").style.filter = "invert(1) hue-rotate(180deg)";
-          src = src.replace("dark|", "");
+        if (src.startsWith("ext|")) {
+          // Open external sites in new tab (bypasses X-Frame-Options blocking)
+          window.open(src.replace("ext|", ""), "_blank");
         } else {
-          document.getElementById("FullScreen").style.filter = "none";
+          document.getElementById("iFrameContainer").style.zIndex = 1;
+          document.getElementById("FullScreen").style.display = "block";
+          if (isDark(src)) {
+            document.getElementById("FullScreen").style.filter = "invert(1) hue-rotate(180deg)";
+            src = src.replace("dark|", "");
+          } else {
+            document.getElementById("FullScreen").style.filter = "none";
+          }
+          document.getElementById("FullScreen").src = src;
+          document.getElementById("FullScreen").style.transform = "scale(" + aURL[num][3] + ")";
         }
-        document.getElementById("FullScreen").src = src;
-        document.getElementById("FullScreen").style.transform = "scale(" + aURL[num][3] + ")";
       }
     }
 
