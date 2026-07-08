@@ -47,7 +47,7 @@ var aURL = [
   ["2196F3", "SPECTRUM", "ext|https://downdetector.com/status/spectrum/", "1", "R"],
   ["2196F3", "XFINITY", "ext|https://downdetector.com/status/xfinity/", "1", "R"],
   ["2196F3", "WATER", "https://water.noaa.gov/#@=-80.0679317,39.4385132,6.0068074&b=topographic&g=obsFcst,1!1!1!1!1!1!1!1!1!1!1!1!1!1!1!0!0!0!0!0,0.5,1!1!1!1!0,0,0,true,5,10,1!1!1!1!1!0&ab=0,0,#D94B4A,1,1,1,#cccccc,1,0,0,#B243B1,1,0,0,#98E09A,1,false&a=hydrologic,0.35,false&s=0,0,0.9,0.9,false&n=false,#72afe9,0.9,0,0.9,0,0.9,false&p=false,0.75,0,7,0,1,2026,7,7,0,false&d=0,0,1,1,1,1,1,1,#006EFF,1,#006EFF,1,#006EFF,false&q=", "1", "R"],
-  // ["2196F3", "FAMILY", "/family.html", "1", "R"],  // future
+  ["FF0000", "FAMILY", "/family.html", "1", "R"],
 ];
   
   // ["f3de21", "SATS", "satellite.js"],
