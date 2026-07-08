@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KF8BSS Family Emergency Communications Plan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Victor+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── SCREEN STYLES ────────────────────────────────────────── */
+    :root {
+      --bg:       #0d1117;
+      --surface:  #161b22;
+      --surface2: #1c2128;
+      --border:   #30363d;
+      --text:     #e6edf3;
+      --muted:    #8b949e;
+      --green:    #3fb950;
+      --yellow:   #d29922;
+      --orange:   #f0883e;
+      --red:      #f85149;
+      --blue:     #4a9eff;
+      --purple:   #bc8cff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 13px;
+      padding: 12px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .page-title {
+      font-family: 'Victor Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+    .page-meta {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      text-align: right;
+    }
+    .print-btn {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      padding: 4px 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--blue);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .print-btn:hover { border-color: var(--blue); }
+
+    /* ── SECTION ── */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+    .section-number {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--blue);
+      background: rgba(74,158,255,0.1);
+      border: 1px solid rgba(74,158,255,0.3);
+      border-radius: 3px;
+      padding: 1px 5px;
+    }
+    .section-title {
+      font-family: 'Victor Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+    .section-body {
+      padding: 8px 10px;
+    }
+
+    /* ── CONTACTS TABLE ── */
+    .contacts-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .contacts-table th {
+      font-family: 'Victor Mono', monospace;
+      font-size: 9px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-weight: 400;
+    }
+    .contacts-table td {
+      padding: 4px 8px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .contacts-table tr:last-child td { border-bottom: none; }
+    .callsign {
+      font-family: 'Victor Mono', monospace;
+      font-weight: 600;
+      color: var(--blue);
+    }
+    .name-cell { font-weight: 700; }
+    .phone-cell { color: var(--green); font-family: 'Victor Mono', monospace; font-size: 11px; }
+    .email-cell { color: var(--muted); font-size: 11px; }
+
+    /* ── SUBSECTION ── */
+    .subsection {
+      margin-bottom: 8px;
+    }
+    .subsection:last-child { margin-bottom: 0; }
+    .subsection-title {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4px;
+    }
+
+    /* ── FREQ ENTRIES ── */
+    .freq-entry {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 2px 0;
+      border-bottom: 1px solid rgba(48,54,61,0.5);
+      font-size: 12px;
+    }
+    .freq-entry:last-child { border-bottom: none; }
+    .freq-val {
+      font-family: 'Victor Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green);
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+    .freq-label { color: var(--text); flex: 1; }
+    .freq-note {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    /* ── OPERATOR ENTRIES ── */
+    .operator-entry {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 4px 8px;
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(48,54,61,0.5);
+      font-size: 12px;
+      align-items: baseline;
+    }
+    .operator-entry:last-child { border-bottom: none; }
+    .op-call {
+      font-family: 'Victor Mono', monospace;
+      font-weight: 600;
+      color: var(--blue);
+      font-size: 11px;
+    }
+    .op-name { color: var(--text); }
+    .op-addr { color: var(--muted); font-size: 11px; grid-column: 2; margin-top: -2px; }
+
+    /* ── NOAA ENTRIES ── */
+    .noaa-entry {
+      display: flex;
+      gap: 8px;
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(48,54,61,0.5);
+      font-size: 12px;
+      align-items: baseline;
+    }
+    .noaa-entry:last-child { border-bottom: none; }
+    .noaa-freq {
+      font-family: 'Victor Mono', monospace;
+      font-weight: 600;
+      color: var(--green);
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+    .noaa-label { color: var(--text); flex: 1; }
+    .noaa-note { color: var(--muted); font-size: 11px; }
+
+    /* ── THREAT TABLE ── */
+    .threat-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+    .threat-table th {
+      font-family: 'Victor Mono', monospace;
+      font-size: 9px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 6px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-weight: 400;
+    }
+    .threat-table td {
+      padding: 4px 6px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .threat-table tr:last-child td { border-bottom: none; }
+    .threat-name { font-weight: 700; color: var(--text); }
+    .action-sip { color: var(--green); }
+    .action-go  { color: var(--red);   }
+    .threat-note { color: var(--muted); font-size: 10px; }
+    .badge {
+      display: inline-block;
+      font-family: 'Victor Mono', monospace;
+      font-size: 9px;
+      font-weight: 600;
+      padding: 1px 5px;
+      border-radius: 3px;
+      border: 1px solid;
+      margin-right: 3px;
+    }
+    .badge-sip { color: var(--green);  border-color: var(--green);  background: rgba(63,185,80,0.1); }
+    .badge-go  { color: var(--red);    border-color: var(--red);    background: rgba(248,81,73,0.1); }
+    .badge-dep { color: var(--yellow); border-color: var(--yellow); background: rgba(210,153,34,0.1); }
+
+    /* ── DESTINATIONS ── */
+    .dest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .dest-location {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 6px 8px;
+    }
+    .dest-location-title {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid var(--border);
+    }
+    .dest-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 1fr 1fr;
+      gap: 4px;
+      padding: 2px 0;
+      border-bottom: 1px solid rgba(48,54,61,0.5);
+      font-size: 11px;
+      align-items: baseline;
+    }
+    .dest-row:last-child { border-bottom: none; }
+    .dest-dir {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--blue);
+    }
+    .dest-a { color: var(--green); }
+    .dest-b { color: var(--yellow); }
+    .dest-c { color: var(--orange); }
+
+    /* ── COMM PLAN STEPS ── */
+    .comm-steps { list-style: none; padding: 0; }
+    .comm-step {
+      display: flex;
+      gap: 8px;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(48,54,61,0.5);
+      font-size: 12px;
+      align-items: baseline;
+    }
+    .comm-step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Victor Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--blue);
+      min-width: 18px;
+      flex-shrink: 0;
+    }
+    .step-text { color: var(--text); line-height: 1.4; }
+    .step-text a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    /* ── REFERENCE LINKS ── */
+    .ref-entry {
+      display: flex;
+      gap: 8px;
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(48,54,61,0.5);
+      font-size: 12px;
+      align-items: baseline;
+    }
+    .ref-entry:last-child { border-bottom: none; }
+    .ref-label { color: var(--text); min-width: 180px; flex-shrink: 0; }
+    .ref-url { color: var(--blue); font-family: 'Victor Mono', monospace; font-size: 10px; word-break: break-all; }
+
+    /* ── PRINT STYLES ──────────────────────────────────────────── */
+    @media print {
+      @page { margin: 0.6in; size: letter; }
+
+      body {
+        background: white !important;
+        color: black !important;
+        font-size: 10px;
+        max-width: 100%;
+        padding: 0;
+      }
+      .print-btn { display: none !important; }
+      .page-header {
+        background: white !important;
+        border: 2px solid black !important;
+        border-radius: 0 !important;
+        margin-bottom: 8px;
+      }
+      .page-title { color: black !important; }
+      .page-meta  { color: #444 !important; }
+      .section {
+        background: white !important;
+        border: 1px solid #888 !important;
+        border-radius: 0 !important;
+        margin-bottom: 6px;
+        page-break-inside: avoid;
+      }
+      .section-header {
+        background: #eee !important;
+        border-bottom: 1px solid #888 !important;
+      }
+      .section-number { color: black !important; background: #ddd !important; border-color: #888 !important; }
+      .section-title  { color: black !important; }
+      .subsection-title { color: #333 !important; border-color: #888 !important; }
+      .callsign, .op-call, .freq-val, .noaa-freq, .dest-dir,
+      .step-num, .section-number { color: black !important; }
+      .phone-cell { color: #222 !important; }
+      .email-cell, .freq-note, .noaa-note, .op-addr,
+      .threat-note, .muted { color: #555 !important; }
+      .freq-label, .noaa-label, .step-text,
+      .name-cell, .threat-name { color: black !important; }
+      .dest-location { background: #f5f5f5 !important; border-color: #888 !important; }
+      .dest-location-title { color: #333 !important; border-color: #888 !important; }
+      .dest-a { color: #006600 !important; }
+      .dest-b { color: #885500 !important; }
+      .dest-c { color: #884400 !important; }
+      .action-sip { color: #006600 !important; }
+      .action-go  { color: #880000 !important; }
+      .badge-sip { color: #006600 !important; border-color: #006600 !important; background: white !important; }
+      .badge-go  { color: #880000 !important; border-color: #880000 !important; background: white !important; }
+      .badge-dep { color: #885500 !important; border-color: #885500 !important; background: white !important; }
+      .contacts-table th, .threat-table th { color: #555 !important; }
+      .contacts-table td, .threat-table td { border-color: #ccc !important; }
+      .freq-entry, .operator-entry, .noaa-entry,
+      .dest-row, .comm-step, .ref-entry { border-color: #ccc !important; }
+      .step-text a { color: #000 !important; text-decoration: underline; }
+      .ref-url { color: #000 !important; }
+      .dest-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div>
+    <div class="page-title">📡 KF8BSS Family Emergency Communications Plan</div>
+    <div class="page-meta" id="last-updated"></div>
+  </div>
+  <button class="print-btn" onclick="window.print()">🖨 Print</button>
+</div>
+
+<div id="content"></div>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// ██  EDIT YOUR CONTENT IN THIS SECTION  ████████████████████████
+// ════════════════════════════════════════════════════════════════
+
+const LAST_UPDATED = "July 2026";
+
+const DATA = {
+
+  // ── 1. FAMILY CONTACTS ────────────────────────────────────────
+  // Fields: name, call (leave "" if not licensed), phone, email
+  // To add a member: copy a line and change the values
+  contacts: [
+    { name: "Dudley",    call: "KF8BSS", phone: "614-886-7474", email: "irvindri@gmail.com / kf8bss@drienterprisesllc.com" },
+    { name: "Amy",       call: "",       phone: "614-783-6887", email: "ahirvin1@gmail.com" },
+    { name: "Alex",      call: "",       phone: "614-886-7475", email: "alexirvinjob@gmail.com" },
+    { name: "Eric",      call: "",       phone: "614-570-8226", email: "ecirvin20@gmail.com" },
+    { name: "Christina", call: "",       phone: "703-994-6663", email: "cemirvin@gmail.com" },
+  ],
+
+  // ── 2. REPEATERS & NETS ───────────────────────────────────────
+  // Each group has a title and array of entries
+  // entry format: { freq, label, note }
+  // To add a repeater: copy an entry line and change the values
+  repeaters: [
+    {
+      area: "Franklin County OH",
+      entries: [
+        { freq: "147.060+", label: "ARES K8DDG — PL 94.8",  note: "Wed Net 20:00L" },
+        { freq: "444.275+", label: "ARES K8DDG — PL 94.8",  note: "Wed Net 20:00L" },
+        { freq: "146.760-", label: "Weather Net W8AIC — PL 123.0", note: "" },
+        { freq: "146.970-", label: "Traffic Net W8RRJ — PL 123.0", note: "Daily 19:15L" },
+      ]
+    },
+    {
+      area: "Delaware County OH",
+      entries: [
+        { freq: "145.170-", label: "W8SMK — PL 74.4",  note: "" },
+        { freq: "145.290-", label: "KA8IWB — PL 123.0", note: "" },
+        { freq: "443.550+", label: "W8SJV",             note: "" },
+      ]
+    },
+    {
+      area: "Anne Arundel MD",
+      entries: [
+        { freq: "146.805-", label: "ARES — PL 107.2",   note: "Sunday Net 20:00L | EchoLink node 90911 KA2JAI-R" },
+        { freq: "HF",       label: "ARES HF Net — 4th Tuesday. SSB then Digital. Net Control W3AAC", note: "" },
+        { freq: "146.670-", label: "Baltimore Traffic Net — PL 107.2", note: "Daily" },
+        { freq: "146.805-", label: "Baltimore Traffic Net Backup — PL 107.2", note: "Daily" },
+      ]
+    },
+    {
+      area: "EMCOMM Nets (Daily)",
+      entries: [
+        { freq: "14.338 USB", label: "National Voice",    note: "19:00Z" },
+        { freq: "14.110 USB", label: "National Digital",  note: "20:00Z" },
+        { freq: "3.588 USB",  label: "Eastern Digital",   note: "01:00Z" },
+        { freq: "3.818 LSB",  label: "Eastern Voice",     note: "02:00Z" },
+        { freq: "3.588 USB",  label: "Central Digital",   note: "02:00Z" },
+        { freq: "3.818 LSB",  label: "Central Voice",     note: "03:00Z" },
+        { freq: "146.420",    label: "Local 2M Net",      note: "06:00L" },
+      ]
+    },
+    {
+      area: "EMCOMM Training Nets (1st & 3rd Tue)",
+      entries: [
+        { freq: "14.338 USB", label: "National Voice",    note: "19:00Z" },
+        { freq: "14.110 USB", label: "National Digital",  note: "20:00Z" },
+        { freq: "7.110 USB",  label: "Regional Digital (Summer)", note: "20:00L" },
+        { freq: "3.588 USB",  label: "Regional Digital (Winter)", note: "20:00L" },
+      ]
+    },
+    {
+      area: "EMCOMM Training Nets (1st & 3rd Thu)",
+      entries: [
+        { freq: "7.238 LSB",  label: "Regional HF Voice (Summer)", note: "20:00L" },
+        { freq: "3.818 LSB",  label: "Regional HF Voice (Winter)", note: "20:00L" },
+        { freq: "146.420",    label: "Local 2M Voice",   note: "19:00L" },
+        { freq: "144.500",    label: "Local 2M Digital (MFSK32)", note: "21:00L" },
+      ]
+    },
+  ],
+
+  // ── 3. NOAA WEATHER RADIO ─────────────────────────────────────
+  // To add a frequency: copy an entry line and change the values
+  noaaFreqs: [
+    { freq: "162.550 MHz", label: "Westerville OH",  call: "KIG86",  note: "Primary" },
+    { freq: "162.400 MHz", label: "Annapolis MD",    call: "KEC83",  note: "Primary" },
+    { freq: "162.450 MHz", label: "Annapolis MD",    call: "WNG736", note: "Secondary — West" },
+    { freq: "162.500 MHz", label: "Annapolis MD",    call: "WXK97",  note: "Secondary — East" },
+  ],
+
+  // ── 4. RADIOGRAM REFERENCES ───────────────────────────────────
+  // To add a reference: copy an entry line and change the values
+  references: [
+    { label: "Online Radiogram Creation", url: "https://nts2.arrl.org/radiogram/" },
+    { label: "Radiogram Form (PDF)",      url: "https://www.arrl.org/files/file/Public%20Service/RADIOGRAM-2011.pdf" },
+    { label: "Winlink (KF8BSS)",          url: "https://winlink.org" },
+    { label: "Winlink Email",             url: "kf8bss@winlink.org" },
+    { label: "Family Dashboard",          url: "https://kf8bss-radio.com" },
+  ],
+
+  // ── 5. LOCAL RADIO OPERATORS ──────────────────────────────────
+  // To add an operator: copy an entry line and change the values
+  operators: [
+    {
+      area: "Anne Arundel MD",
+      entries: [
+        { call: "KC3LSC", name: "Herbert A Fox",   addr: "1165 River Bay Rd, Annapolis" },
+        { call: "W3BAY",  name: "Roy L Wood",      addr: "1332 Swan Dr, Annapolis" },
+        { call: "WB2ZJW", name: "Deane R Charlson",addr: "1205 Hilltop Dr, Annapolis" },
+        { call: "N4HRC",  name: "Daniel M Coman",  addr: "167 W Lake Dr, Annapolis" },
+        { call: "N3NEN",  name: "Nancy E Noel",    addr: "13 Herndon Ave, Annapolis" },
+      ]
+    },
+    {
+      area: "Westerville OH",
+      entries: [
+        { call: "KE8ZJW", name: "Nathaniel Hylton", addr: "55 S Hempstead Rd, Westerville" },
+        { call: "KD8SMY", name: "Curtis J Smith",   addr: "10 N Hempstead Rd, Westerville" },
+        { call: "N8VWQ",  name: "Robert E Mayzer",  addr: "132 Marlene Dr, Westerville" },
+        { call: "AC8XM",  name: "Gretchen M Herr",  addr: "1252 Flagstone Square, Westerville" },
+      ]
+    },
+  ],
+
+  // ── 6. EVACUATION DESTINATIONS ───────────────────────────────
+  // Plan A = preferred, Plan B = first alternate, Plan C = second alternate
+  // Avoid: large SMAs, flood-prone river valleys, known industrial hazard areas
+  // To edit: change the destination names below
+  destinations: [
+    {
+      location: "Westerville OH",
+      note: "Cross Ohio River as priority if evacuating South. Avoid large SMAs.",
+      rows: [
+        { dir: "NORTH", a: "Delaware OH",      b: "Findlay OH",       c: "Traverse City MI" },
+        { dir: "WEST",  a: "Springfield OH",   b: "Dayton OH",        c: "[TBD]" },
+        { dir: "SOUTH", a: "Cross Ohio River", b: "Maysville KY",     c: "[TBD]" },
+        { dir: "EAST",  a: "Zanesville OH",    b: "Wheeling WV",      c: "Annapolis MD" },
+      ]
+    },
+    {
+      location: "Annapolis MD",
+      note: "East evacuation not recommended — proximity to Atlantic/Chesapeake.",
+      rows: [
+        { dir: "NORTH", a: "Baltimore bypass", b: "York PA",          c: "Harrisburg PA" },
+        { dir: "WEST",  a: "Frederick MD",     b: "Hagerstown MD",    c: "Morgantown WV" },
+        { dir: "SOUTH", a: "La Plata MD",      b: "Virginia US-301",  c: "[TBD]" },
+        { dir: "EAST",  a: "Not recommended",  b: "",                 c: "" },
+      ]
+    },
+  ],
+
+  // ── 7. GO / NO-GO THREAT MATRIX ──────────────────────────────
+  // action: "SIP" = Shelter in Place, "GO" = Evacuate, "DEP" = Depends
+  // To add a threat: copy an entry block and change the values
+  threats: [
+    {
+      threat: "Severe Weather — Tornado",
+      action: "DEP",
+      sip: "Severe Thunderstorm Watch/Warning — shelter in lowest level",
+      go:  "Tornado Warning for your location OR EF3+ confirmed within 10 miles",
+      note: "Monitor NWS alerts tiles and OH/MD alert tiles on dashboard"
+    },
+    {
+      threat: "Severe Weather — Flooding",
+      action: "GO",
+      sip: "Flash Flood Watch — monitor and prepare",
+      go:  "Flash Flood Warning or Emergency issued for your county",
+      note: "Check Water Gauges tab. Cross Ohio River early if evacuating south."
+    },
+    {
+      threat: "Power Outage",
+      action: "DEP",
+      sip: "Less than 72 hours with restoration timeline",
+      go:  "Greater than 72 hours with no restoration timeline",
+      note: "Monitor AEP/BGE outage tabs"
+    },
+    {
+      threat: "Water Supply Contamination",
+      action: "DEP",
+      sip: "Boil water advisory — use stored/treated water",
+      go:  "Do Not Use order lasting more than 48 hours",
+      note: "Columbus: Hoover Reservoir. Annapolis: Severn River / Baltimore system."
+    },
+    {
+      threat: "Civil Unrest",
+      action: "DEP",
+      sip: "Unrest contained and more than 10 miles away",
+      go:  "Within 10 miles and spreading toward your location",
+      note: "Monitor ADS-B for unusual air activity as a secondary indicator"
+    },
+    {
+      threat: "EMP — Single Event",
+      action: "GO",
+      sip: "First 1-2 hours — assess vehicle operability",
+      go:  "Grid will not recover quickly — evacuate within 24 hours",
+      note: "HF radio (non-digital) becomes primary comms. EMCOMM nets on pre-planned freqs."
+    },
+    {
+      threat: "EMP — Widespread / Multiple",
+      action: "GO",
+      sip: "First 24-48 hours only — shelter and assess",
+      go:  "Civilization-level grid-down event — move to rural agricultural community",
+      note: "Pre-positioned Winlink and HF nets are last-resort comms infrastructure."
+    },
+    {
+      threat: "Nuclear — Single Location",
+      action: "DEP",
+      sip: "If not in blast/fire radius — get inside, stay inside 24-48 hrs",
+      go:  "After initial decay curve drop — evacuate PERPENDICULAR to wind/plume",
+      note: "Check wind direction on dashboard (earth.nullschool tab). Plume direction determines evac route."
+    },
+    {
+      threat: "Nuclear — Multiple Locations",
+      action: "DEP",
+      sip: "Shelter in place first 24-48 hours regardless",
+      go:  "After decay — rural, upwind, away from military/industrial targets",
+      note: "Likely accompanied by EMP. Assume grid-down protocols."
+    },
+  ],
+
+  // ── 8. COMMUNICATIONS PLAN ────────────────────────────────────
+  // To edit steps: change the text inside the quotes
+  commPlan: [
+    {
+      title: "Ohio Group → Maryland Group",
+      steps: [
+        "Monitor NOAA Weather Radio (162.550 KIG86) and dashboard alerts tiles.",
+        "Activate VHF/UHF and HF radios. Monitor ARES and EMCOMM nets for situation reports.",
+        "If cell networks available: call or text Maryland family directly.",
+        "If cell down: attempt Winlink message to kf8bss@winlink.org. Note: last-mile delivery may fail if Maryland internet is also down.",
+        "Send a Radiogram via National Traffic System. Request delivery confirmation. Use online form at nts2.arrl.org/radiogram.",
+        "Attempt to contact a local Annapolis radio operator (see Section 5) to pass a message.",
+      ]
+    },
+    {
+      title: "Maryland Family → Ohio Group",
+      steps: [
+        "Monitor NOAA Weather Radio — Primary 162.400 MHz (KEC83).",
+        "If cell networks available: call or text Ohio family directly.",
+        "If cell down but internet available: email family addresses and kf8bss@winlink.org (Dudley's Winlink address).",
+        "If email unavailable but internet available: use online Radiogram form at nts2.arrl.org/radiogram to send a message to KF8BSS via the National Traffic System.",
+        "If no internet: handwrite a message and bring it to a local licensed radio operator (see Section 5). Ask them to send a Radiogram to KF8BSS.",
+        "In extended grid-down: monitor 146.805- PL 107.2 (Anne Arundel ARES) for local emergency coordination.",
+      ]
+    },
+  ],
+
+};
+
+// ════════════════════════════════════════════════════════════════
+// ██  RENDERING CODE — NO NEED TO EDIT BELOW THIS LINE  █████████
+// ════════════════════════════════════════════════════════════════
+
+document.getElementById('last-updated').textContent = 'Last Updated: ' + LAST_UPDATED;
+
+function el(tag, cls, html) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html !== undefined) e.innerHTML = html;
+  return e;
+}
+
+function section(num, title, bodyHTML) {
+  const s = el('div', 'section');
+  const h = el('div', 'section-header');
+  h.appendChild(el('span', 'section-number', num));
+  h.appendChild(el('span', 'section-title', title));
+  s.appendChild(h);
+  const b = el('div', 'section-body');
+  b.innerHTML = bodyHTML;
+  s.appendChild(b);
+  return s;
+}
+
+function subsection(title, innerHTML) {
+  return `<div class="subsection">
+    <div class="subsection-title">${title}</div>
+    ${innerHTML}
+  </div>`;
+}
+
+// 1. Contacts
+function renderContacts() {
+  const rows = DATA.contacts.map(c => `
+    <tr>
+      <td class="name-cell">${c.name}</td>
+      <td class="callsign">${c.call || '—'}</td>
+      <td class="phone-cell">${c.phone}</td>
+      <td class="email-cell">${c.email}</td>
+    </tr>`).join('');
+  return `<table class="contacts-table">
+    <thead><tr><th>Name</th><th>Callsign</th><th>Phone</th><th>Email</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+// 2. Repeaters
+function renderRepeaters() {
+  return DATA.repeaters.map(g => {
+    const entries = g.entries.map(e => `
+      <div class="freq-entry">
+        <span class="freq-val">${e.freq}</span>
+        <span class="freq-label">${e.label}</span>
+        ${e.note ? `<span class="freq-note">${e.note}</span>` : ''}
+      </div>`).join('');
+    return subsection(g.area, entries);
+  }).join('');
+}
+
+// 3. NOAA
+function renderNOAA() {
+  return DATA.noaaFreqs.map(f => `
+    <div class="noaa-entry">
+      <span class="noaa-freq">${f.freq}</span>
+      <span class="noaa-label">${f.label} <span style="color:var(--muted);font-family:'Victor Mono',monospace;font-size:10px">${f.call}</span></span>
+      <span class="noaa-note">${f.note}</span>
+    </div>`).join('');
+}
+
+// 4. References
+function renderRefs() {
+  return DATA.references.map(r => `
+    <div class="ref-entry">
+      <span class="ref-label">${r.label}</span>
+      <span class="ref-url">${r.url}</span>
+    </div>`).join('');
+}
+
+// 5. Operators
+function renderOperators() {
+  return DATA.operators.map(g => {
+    const entries = g.entries.map(o => `
+      <div class="operator-entry">
+        <span class="op-call">${o.call}</span>
+        <span class="op-name">${o.name}</span>
+        <span class="op-addr">${o.addr}</span>
+      </div>`).join('');
+    return subsection(g.area, entries);
+  }).join('');
+}
+
+// 6. Destinations
+function renderDestinations() {
+  const locations = DATA.destinations.map(loc => {
+    const rows = loc.rows.map(r => `
+      <div class="dest-row">
+        <span class="dest-dir">${r.dir}</span>
+        <span class="dest-a">${r.a}</span>
+        <span class="dest-b">${r.b}</span>
+        <span class="dest-c">${r.c}</span>
+      </div>`).join('');
+    return `<div class="dest-location">
+      <div class="dest-location-title">${loc.location}</div>
+      <div class="dest-row" style="opacity:0.5;font-size:9px;font-family:'Victor Mono',monospace">
+        <span></span><span>PLAN A</span><span>PLAN B</span><span>PLAN C</span>
+      </div>
+      ${rows}
+      ${loc.note ? `<div style="font-size:10px;color:var(--muted);margin-top:4px">${loc.note}</div>` : ''}
+    </div>`;
+  }).join('');
+  return `<div class="dest-grid">${locations}</div>`;
+}
+
+// 7. Threat Matrix
+function renderThreats() {
+  const rows = DATA.threats.map(t => {
+    const badge = t.action === 'SIP' ? '<span class="badge badge-sip">SIP</span>' :
+                  t.action === 'GO'  ? '<span class="badge badge-go">GO</span>' :
+                                       '<span class="badge badge-dep">DEP</span>';
+    return `<tr>
+      <td class="threat-name">${t.threat}</td>
+      <td>${badge}</td>
+      <td class="action-sip">${t.sip}</td>
+      <td class="action-go">${t.go}</td>
+      <td class="threat-note">${t.note}</td>
+    </tr>`;
+  }).join('');
+  return `<table class="threat-table">
+    <thead><tr>
+      <th>Threat</th><th>Default</th>
+      <th>Shelter in Place When</th>
+      <th>Evacuate When</th>
+      <th>Notes</th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+// 8. Comm Plan
+function renderCommPlan() {
+  return DATA.commPlan.map(p => {
+    const steps = p.steps.map((s, i) => `
+      <li class="comm-step">
+        <span class="step-num">${i + 1}.</span>
+        <span class="step-text">${s}</span>
+      </li>`).join('');
+    return subsection(p.title, `<ul class="comm-steps">${steps}</ul>`);
+  }).join('');
+}
+
+// Build page
+const content = document.getElementById('content');
+content.appendChild(section('1', 'Family Contacts', renderContacts()));
+content.appendChild(section('2', 'Repeaters & Nets', renderRepeaters()));
+content.appendChild(section('3', 'NOAA Weather Radio', renderNOAA()));
+content.appendChild(section('4', 'Radiogram & References', renderRefs()));
+content.appendChild(section('5', 'Local Radio Operators', renderOperators()));
+content.appendChild(section('6', 'Evacuation Destinations', renderDestinations()));
+content.appendChild(section('7', 'Go / No-Go Threat Matrix', renderThreats()));
+content.appendChild(section('8', 'Communications Plan', renderCommPlan()));
+</script>
+</body>
+</html>
