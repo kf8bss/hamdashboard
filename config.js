@@ -27,6 +27,7 @@ var aURL = [
   ["2196F3", "CONTESTS", "https://www.contestcalendar.com/weeklycont.php", "1"],
   ["2196F3", "PSKREPTR", "https://pskreporter.info/pskmap.html", "1"],
   ["2196F3", "AZ MAP", "https://kf8bss-radio.com/AzimuthalMap.pdf", "1"],
+  ["2196F3", "ISS", "https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544", "1"],
 
   // ── RIGHT — Situational Awareness ─────────────────────────────
   ["2196F3", "NWS ILN", "https://www.weather.gov/iln", "1", "R"],
