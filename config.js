@@ -32,6 +32,7 @@ var aURL = [
 
   // ── RIGHT — Situational Awareness ─────────────────────────────
   ["FF0000", "FAMILY", "/family.html", "1", "R"],
+  ["2196F3", "WEATHER", "weather.js", "1", "R"],
   ["2196F3", "NWS ILN", "https://www.weather.gov/iln", "1", "R"],
   ["2196F3", "NWS LWX", "https://www.weather.gov/lwx", "1", "R"],
   ["2196F3", "NHC", "https://www.nhc.noaa.gov", "1", "R"],
