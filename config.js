@@ -191,13 +191,13 @@ var tileDelay = [
 var aRSS = [
   // ["https://www.amsat.org/feed/", 60],           // Example RSS feed, refresh every 60 minutes
   // ["https://daily.hamweekly.com/atom.xml", 120], // Example Atom feed, refresh every 120 minutes
-  ["https://forecast.weather.gov/xml/current_obs/KCMH.rss", 5],
-  ["https://forecast.weather.gov/xml/current_obs/KBWI.rss", 5],
-  ["https://forecast.weather.gov/xml/current_obs/KPIT.rss", 5],
-  ["https://forecast.weather.gov/xml/current_obs/KIND.rss", 5],
-  ["https://forecast.weather.gov/xml/current_obs/KTVC.rss", 5],
-  ["https://www.spc.noaa.gov/products/spcwwrss.xml", 5],
-  ["https://www.spc.noaa.gov/products/spcmdrss.xml", 5],
+  ["https://forecast.weather.gov/xml/current_obs/KCMH.rss", 5, "KCMH"],
+  ["https://forecast.weather.gov/xml/current_obs/KBWI.rss", 5, "KBWI"],
+  ["https://forecast.weather.gov/xml/current_obs/KPIT.rss", 5, "KPIT"],
+  ["https://forecast.weather.gov/xml/current_obs/KIND.rss", 5, "KIND"],
+  ["https://forecast.weather.gov/xml/current_obs/KTVC.rss", 5, "KTVC"],
+  ["https://www.spc.noaa.gov/products/spcwwrss.xml", 5, "SPC WATCH"],
+  ["https://www.spc.noaa.gov/products/spcmdrss.xml", 5, "SPC MD"],
   // ["https://api.weather.gov/alerts/active?zone=OHC049", 10],
   // ["https://api.weather.gov/alerts/active?zone=OHC041", 10],
   // ["https://api.weather.gov/alerts/active?zone=MDC003", 10],
